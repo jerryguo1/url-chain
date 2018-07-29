@@ -40,58 +40,62 @@ node.files.add(files, function (err, res){
     else {
       console.log(res)
     }
+  const bs58 = require('bs58');
+  var hash = res[0].hash
+  var byteshash = bs58.decode(hash)
+  console.log(byteshash.toString('hex'))
 })
 })
 // const Couchbase = require("couchbase");
- const Request = require("request-promise");
+//  const Request = require("request-promise");
 // const UUID = require("uuid");
 // const Bitcore = require("bitcore-lib");
 // const Coinstring = require('coinstring');
-const bch = require('bitcoincashjs');
-var Network = bch.Networks;
+// const bch = require('bitcoincashjs');
+// var Network = bch.Networks;
 // const fileReader = require('filereader');
 // var reader = new fileReader();
 // const XMLHttpRequest = require('XMLHttpRequest')
 // function readTextFile(file)
 // {
-fs.exists(myArgs[2], function(exists) { 
-  if (exists) { 
-      function read(file, callback) {
-        fs.readFile(file, 'utf8', function(err, data) {
-          if (err) {
-            console.log(err);
-          }
-          callback(data);
-        });
-      }
+// fs.exists(myArgs[2], function(exists) { 
+//   if (exists) { 
+//       function read(file, callback) {
+//         fs.readFile(file, 'utf8', function(err, data) {
+//           if (err) {
+//             console.log(err);
+//           }
+//           callback(data);
+//         });
+//       }
 
-      var output = read(myArgs[2], function(data) {
-         // console.log(data);
-      });
+//       var output = read(myArgs[2], function(data) {
+//          // console.log(data);
+//       });
 
-     if (bch.PrivateKey.isValid(data)){
-      var privateKey = data;
-      var address = privateKey.toAddress(Network.testnet)
-     }
+//      if (bch.PrivateKey.isValid(data)){
+//       var privateKey = data;
+//       var address = privateKey.toAddress(Network.testnet)
+//      }
  
-    else {
-    var privateKey = new bch.PrivateKey();
-    var address = privateKey.toAddress();
-    var exported = privateKey.toWIF();
-    var imported = bch.PrivateKey.fromWIF(exported)
-    }
-  console.log(address.toString());
+//     else {
+//     var privateKey = new bch.PrivateKey();
+//     var address = privateKey.toAddress();
+//     var exported = privateKey.toWIF();
+//     var imported = bch.PrivateKey.fromWIF(exported)
+//     }
+//   console.log(address.toString());
 
 
-var Insight = require('bitcore-explorers').Insight;
-var insight = new Insight();
-insight.getUnspentUtxos(address.toString(), function(err, utxos) {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(utxos);
-  }
-});
+// var Insight = require('bitcore-explorers').Insight;
+// var insight = new Insight();
+// insight.getUnspentUtxos(address.toString(), function(err, utxos) {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log(utxos);
+//   }
+// });
 
 
 // fs.readFile(myArgs[2], (e, data) => {
